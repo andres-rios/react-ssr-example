@@ -2,19 +2,13 @@
 import React, { Component } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { hydrate } from 'react-dom';
-
-class App extends Component {
-  render() {
-    return (
-      <div>This is really magic</div>
-    );
-  }
-}
+import App from './App';
 
 if (global.document) {
   hydrate(<App />, document.querySelector('#root'));
 }
 
-export default function() {
-  return renderToStaticMarkup(<App />);
+export default function(location) {
+  const context = {};
+  return renderToStaticMarkup(<App location={location} context={context} />);
 }

@@ -19,7 +19,7 @@ const common = {
     {
       test: /.js$/,
       loader: 'babel-loader',
-      include: path.join(path.resolve(__dirname), 'src'),
+      include: [path.join(path.resolve(__dirname), 'src'), 'index'],
       exclude: /node_modules/,
       query: {
         presets: ['react']

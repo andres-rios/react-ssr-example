@@ -24,8 +24,15 @@ server.watch({aggregateTimeout: 200}, (err, stats) => {
   }
 });
 
+
+app.get('/api/names', (req, res, next) => {
+  res.json([1, 2, 3, 4, 5]);
+});
+
+
 const ssr = (req, res, next) => {
   const render = require('./dist/bundle.js').default;
+  const html = render(req.url);
   res.send(`
 <!DOCTYPE html>
 <html>
@@ -34,7 +41,7 @@ const ssr = (req, res, next) => {
     <title>Webpack App</title>
   </head>
   <body>
-    <div id="root">${render()}</div>
+    <div id="root">${html}</div>
     <script type="text/javascript" src="scripts.js"></script>
   </body>
 </html>`);
