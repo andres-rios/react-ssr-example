@@ -7,7 +7,6 @@ const common = {
   context: __dirname,
   devtool: 'source-map',
   mode: 'development',
-  entry: ['./src/index.js'],
   output: {
     path: path.join(path.resolve(__dirname), 'dist')
   },
@@ -36,7 +35,7 @@ const common = {
   }
 };
 
-return Object.freeze(common);
+return common;
 }
 
 module.exports = {
